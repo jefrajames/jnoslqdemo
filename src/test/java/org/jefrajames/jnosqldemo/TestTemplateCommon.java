@@ -15,6 +15,7 @@
  */
 package org.jefrajames.jnosqldemo;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -95,9 +96,15 @@ public abstract class TestTemplateCommon {
 
     @Test
     public void testSelectAll() {
+        // Save 2 people
+        List<Person> newPeople = new ArrayList(2);
+        newPeople.add(new Person("testFindAllWithTemplate-1 " + System.currentTimeMillis(), PHONES, ADDRESS));
+        newPeople.add(new Person("testFindAllWithTemplate-2 " + System.currentTimeMillis(), PHONES, ADDRESS));
+        template.insert(newPeople);
+
         DocumentQuery query = select().from("Person").build();
-        List<Person> people = template.select(query);
-        assertTrue(people.size() == template.count(Person.class));
+        List<Person> allPeople = template.select(query);
+        assertTrue(allPeople.size() >= newPeople.size());
     }
 
     @Test
