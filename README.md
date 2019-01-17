@@ -2,7 +2,7 @@
 
 This project is derived from Eclipse JNoSQL [Hands-on lab at Oracle Code One 2018](https://github.com/JNOSQL/oc1-hands-on-2018/tree/master/document)
 
-It aims at delivering some clarifications for the [JNoSQL](https://projects.eclipse.org/) newbies explaining 
+It aims at providing some clarifications for the [JNoSQL](http://www.jnosql.org/) newbies explaining 
 how to use a template, a repository in a Java EE and Java SE contexts.
 
 I've found myself in difficulties when running it and I've decided to share my modest experience throw this demo project.
@@ -32,7 +32,7 @@ JNoSQL is based on two layers:
 
 The ambition of JNoSQL is to provide a consistent developer experience across the different NoSQL technologies while enabling to use some specificities. 
 
-As illustrated by the above mentioned hands-on , JNoSQL offers two ways to interact with a database:
+As illustrated in the above mentioned hands-on , JNoSQL offers two ways to interact with a database:
 
 1. using a Template,
 2. using a Repositoty
@@ -78,12 +78,12 @@ A template provides great flexibility with the database enabling all kinds of pr
 ## Using a repository
 
 A Repository is a CDI injectable Java interface that extends JNoSQL Repository.
-By default, a repository implements:
+By default, a Repository implements:
 
 - CRUD operations on a single or a list of entities: findById, save (both for insert and update), delete,
 - Basic queries: count, existById (for a single or a list of entities), count.
 
-Additional queries can be defined in the interface, returning Stream or List, based on attributes names of entities or value objects:
+Additional queries can be defined in the interface, returning Stream or List, based on attribute names of entities or value objects:
 
 - findAll,
 - findByPhones ...
@@ -96,7 +96,7 @@ Is seems very similar to [DeltaSpike Data](https://deltaspike.apache.org/documen
 
 A Template provides great flexibility to query the database.
 A Repository has the main benefit of being strongly typed, enabling a consistent developer experience, thanks to its Java interface definition. 
-However it is less powerful in terms of queries. For instance, it doesn't enable to paginate on result sets (with skip and limit directives on select queries).
+However it is less powerful in terms of query. For instance, it doesn't enable to paginate on result sets (with skip and limit directives on select queries).
 At least, I've not been able to find it ...
 
 
@@ -104,7 +104,7 @@ At least, I've not been able to find it ...
 
 Here are some specific feedbacks coming from this first experience:
 
-- a CDI producer returning a DocumentCollectionManager is needed to inject a Template or a repository (@ApplicationScoped),
+- a CDI producer returning a DocumentCollectionManager is needed to inject a Template or a Repository (@ApplicationScoped),
 - Diana mongodb-driver has a weird dependency on de.flapdoodle.embed which is a testing tool,
 - the @Database annotation is required when using a Repository in Java EE. 
 Warning: if you forget it or if you put a bad value, a weird CDI error happens: *WELD-000167: Class PersonRepository is annotated with @ApplicationScoped but it does not declare an appropriate constructor therefore is not registered as a bean!*
@@ -114,7 +114,7 @@ Curiously, this error does not happen in Java SE and the @Database annotation is
 
 ## Conclusion
 
-JNoSQL seems to be a good solution and a strong basis for a new Jakarta EE specification. 
+JNoSQL seems to be a promising solution and a strong basis for a new Jakarta EE specification. 
 It would deserve a better documentation and more examples to facilitate the first experience.
 
 I hope that this small example will enable you to discover JNoSQL and to make the proper decision when choosing between a Repository and a Template.
@@ -128,7 +128,7 @@ To make a long story short:
 
 Hope this helps!
 
-##H2 References:
+##References:
 
 - [A guide to Eclipse JNoSQL (Oct. 2018)](https://www.baeldung.com/eclipse-jnosql)
 - [DZone article About JNoSQL 0.0.4 (Jan. 2018)](https://dzone.com/articles/eclipse-jnosql-a-solution-to-java-in-nosql-databas)
