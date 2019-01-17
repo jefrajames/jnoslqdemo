@@ -105,7 +105,7 @@ At least, I've not been able to find it ...
 Here are some specific feedbacks coming from this first experience:
 
 - a CDI producer returning a DocumentCollectionManager is needed to inject a Template or a Repository (@ApplicationScoped),
-- Diana mongodb-driver has a weird dependency on de.flapdoodle.embed which is a testing tool,
+- Diana mongodb-driver has a weird dependency on de.flapdoodle.embed which is a testing tool. This is subject to [an open issue](https://github.com/eclipse/jnosql-diana-driver/issues/110) on the [jnosql-diana-driver project](https://github.com/eclipse/jnosql-diana-driver). I've excluded it in the pom.xml,
 - the @Database annotation is required when using a Repository in Java EE. 
 Warning: if you forget it or if you put a bad value, a weird CDI error happens: *WELD-000167: Class PersonRepository is annotated with @ApplicationScoped but it does not declare an appropriate constructor therefore is not registered as a bean!*
 I was ready to open an issue when I realized that I put *@Database(DatabaseType.COLUMN)* in my code instead of *@Database(DatabaseType.DOCUMENT)*. 
