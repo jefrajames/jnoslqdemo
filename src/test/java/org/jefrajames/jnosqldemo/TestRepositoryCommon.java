@@ -87,16 +87,22 @@ public abstract class TestRepositoryCommon {
 
     @Test
     public void testFindAll() {
-        List<Person> people = repo.findAll();
-        assertTrue(people.size() == repo.count());
+        // Save 2 people
+        List<Person> newPeople = new ArrayList(2);
+        newPeople.add(new Person("testFindAllWithRepository-1 " + System.currentTimeMillis(), PHONES, ADDRESS));
+        newPeople.add(new Person("testFindAllWithRepository-2 " + System.currentTimeMillis(), PHONES, ADDRESS));
+        repo.save(newPeople);
+        
+        List<Person> allPeople = repo.findAll();
+        assertTrue(allPeople.size() >= newPeople.size());
     }
 
     @Test
     public void testFindByPhones() {
         // Save 2 people
         List<Person> newPeople = new ArrayList(2);
-        newPeople.add(new Person("testFindByPhones-1 " + System.currentTimeMillis(), PHONES, ADDRESS));
-        newPeople.add(new Person("testFindByPhones-2 " + System.currentTimeMillis(), PHONES, ADDRESS));
+        newPeople.add(new Person("testFindByPhonesWithRepository-1 " + System.currentTimeMillis(), PHONES, ADDRESS));
+        newPeople.add(new Person("testFindByPhonesWithRepository-2 " + System.currentTimeMillis(), PHONES, ADDRESS));
         repo.save(newPeople);
 
         // At least 2 people with the given phones must be found
