@@ -128,7 +128,7 @@ To make a long story short:
 
 Hope this helps!
 
-##References:
+## References:
 
 - [A guide to Eclipse JNoSQL (Oct. 2018)](https://www.baeldung.com/eclipse-jnosql)
 - [DZone article About JNoSQL 0.0.4 (Jan. 2018)](https://dzone.com/articles/eclipse-jnosql-a-solution-to-java-in-nosql-databas)
